@@ -1,5 +1,7 @@
 package com.produtos.api.model;
 
+import com.produtos.api.dto.ProdutoDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,6 +30,16 @@ public class produto {
 
     @Column(name = "PRECO_PRODUTO",nullable = false)
     private int preco;
+
+    public ProdutoDTO toDTO(){
+        ProdutoDTO dto = new ProdutoDTO();
+        dto.setId(id);
+        dto.setNome(nome);
+        dto.setDescricao(descricao);
+        dto.setPreco(preco);
+
+        return dto;
+    }
 
 
 }
