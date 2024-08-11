@@ -1,5 +1,6 @@
 package com.produtos.api.dto;
 
+import com.produtos.api.constants.CategoriaProduto;
 import com.produtos.api.constants.StatusProduto;
 
 import lombok.AllArgsConstructor;
@@ -15,5 +16,6 @@ public class ProdutoDTO {
     private String descricao;
     private int preco;
     private StatusProduto status;
+    private CategoriaProduto categoria;
 
 }

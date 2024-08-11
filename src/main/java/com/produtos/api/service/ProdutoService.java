@@ -54,6 +54,7 @@ public class ProdutoService {
             produto.setDescricao(dadosProduto.getDescricao());
             produto.setPreco(dadosProduto.getPreco());
             produto.setStatus(dadosProduto.getStatus());
+            produto.setCategoria(dadosProduto.getCategoria());
 
             return produtoRepository.save(produto);
         }

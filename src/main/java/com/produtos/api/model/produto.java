@@ -1,5 +1,6 @@
 package com.produtos.api.model;
 
+import com.produtos.api.constants.CategoriaProduto;
 import com.produtos.api.constants.StatusProduto;
 import com.produtos.api.dto.ProdutoDTO;
 
@@ -38,6 +39,10 @@ public class produto {
     @Enumerated(EnumType.STRING)
     private StatusProduto status;
 
+    @Column(name = "CATEGORIA_PRODUTO",nullable = false)
+    @Enumerated(EnumType.STRING)
+    private CategoriaProduto categoria;
+
     public ProdutoDTO toDTO(){
         ProdutoDTO dto = new ProdutoDTO();
         dto.setId(id);
@@ -45,6 +50,7 @@ public class produto {
         dto.setDescricao(descricao);
         dto.setPreco(preco);
         dto.setStatus(status);
+        dto.setCategoria(categoria);
 
         return dto;
     }
