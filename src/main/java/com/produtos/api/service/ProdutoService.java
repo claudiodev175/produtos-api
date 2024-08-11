@@ -1,5 +1,6 @@
 package com.produtos.api.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,13 @@ public class ProdutoService {
     return null;
 
     }
+    
+    public List<ProdutoDTO> filtrarProdutosCujoNomeComecaCom(String nome){
+        List<produto> produtos = produtoRepository.findByNomeLike(nome + "%");
+
+        return produtos.stream().map(produto::toDTO).toList();
+    }
+
 
     @DeleteMapping("/{id}")
     public void deletarProduto(Long id){
