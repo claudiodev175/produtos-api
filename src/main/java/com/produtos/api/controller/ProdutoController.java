@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.produtos.api.constants.StatusProduto;
 import com.produtos.api.dto.ProdutoDTO;
 import com.produtos.api.model.produto;
 import com.produtos.api.service.ProdutoService;
@@ -68,6 +69,11 @@ public class ProdutoController {
     @GetMapping("/busca")
     public ResponseEntity<List<ProdutoDTO>> filtrarProdutosCujoNomeComecaCom(@RequestParam("nome") String nome){
         return ResponseEntity.status(HttpStatus.OK).body(produtoService.filtrarProdutosCujoNomeComecaCom(nome));
+    }
+
+    @GetMapping("/filtrar")
+    public ResponseEntity<List<ProdutoDTO>> filtarProdutosPeloStatus(@RequestParam(name = "status",defaultValue = "DISPONIVEL")StatusProduto status){
+        return ResponseEntity.ok().body(produtoService.filtraProdutosPeloStatus(status));
     }
 
 }

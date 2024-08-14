@@ -26,10 +26,10 @@ public class produto {
     @Column(name = "ID_PRODUTO")
     private Long id;
 
-    @Column(name = "NOME_PRODUTO",nullable = false)
+    @Column(name = "NOME_PRODUTO",nullable = false, length = 50)
     private String nome;
 
-    @Column(name = "DESCRICAO_PRODUTO",nullable = false)
+    @Column(name = "DESCRICAO_PRODUTO",nullable = false,columnDefinition = "TEXT")
     private String descricao;
 
     @Column(name = "PRECO_PRODUTO",nullable = false)
@@ -40,7 +40,7 @@ public class produto {
     private StatusProduto status;
 
     @Column(name = "CATEGORIA_PRODUTO",nullable = false)
-    @Enumerated(EnumType.STRING)
+    @Enumerated(value = EnumType.STRING)
     private CategoriaProduto categoria;
 
     public ProdutoDTO toDTO(){

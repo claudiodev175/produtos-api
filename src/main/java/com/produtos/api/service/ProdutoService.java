@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
+import com.produtos.api.constants.StatusProduto;
 import com.produtos.api.dto.ProdutoDTO;
 import com.produtos.api.model.produto;
 import com.produtos.api.repository.ProdutoRepository;
@@ -60,6 +61,12 @@ public class ProdutoService {
         }
 
         return null;
+    }
+
+    public List<ProdutoDTO> filtraProdutosPeloStatus(StatusProduto status){
+        List<produto> produtos = produtoRepository.findByStatus(status);
+
+        return produtos.stream().map(produto::toDTO).toList();
     }
 
     
