@@ -11,6 +11,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,6 +36,10 @@ public class produto {
 
     @Column(name = "PRECO_PRODUTO",nullable = false)
     private int preco;
+
+    @ManyToOne
+    @JoinColumn(name = "FORNECEDOR_ID")
+    private Fornecedor fornecedor;
 
     @Column(name = "PRODUTO_STATUS",nullable = false)
     @Enumerated(EnumType.STRING)
