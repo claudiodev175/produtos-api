@@ -1,5 +1,7 @@
 package com.produtos.api.model;
 
+import com.produtos.api.dto.FornecedorDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,4 +26,13 @@ public class Fornecedor {
 
     @Column(nullable = false,unique = true)
     private String cnpj;
+
+    public FornecedorDTO toDTO(){
+        FornecedorDTO dto = new FornecedorDTO();
+        dto.setId(id);
+        dto.setNome(nome);
+        dto.setCnpj(cnpj);
+        
+        return dto;
+    }
 }
