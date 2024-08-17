@@ -3,6 +3,7 @@ package com.produtos.api.model;
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.produtos.api.dto.UsuarioDTO;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,4 +37,15 @@ public class Usuario {
     @JsonFormat(pattern = "dd/MM/yyyy")
     @Column(name = "DATA_NASC_USUARIO")
     private LocalDate datadenascimento;
+
+    public UsuarioDTO toDTO(){
+        UsuarioDTO dto = new UsuarioDTO();
+        dto.setId(id);
+        dto.setNome(nome);
+        dto.setEmail(email);
+        dto.setDatadenascimento(datadenascimento);
+        dto.setCpf(cpf);
+
+        return dto;
+    }
 }
