@@ -3,11 +3,13 @@ package com.produtos.api.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.produtos.api.dto.UsuarioDTO;
 import com.produtos.api.model.Usuario;
 import com.produtos.api.repository.UsuarioRepository;
 
+@Service
 public class UsuarioService {
     
     @Autowired
