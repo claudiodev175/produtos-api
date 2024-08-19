@@ -1,5 +1,6 @@
 package com.produtos.api.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,13 @@ public class UsuarioService {
     @DeleteMapping("/{id}")
     public void deletarUsuario(Long id){
         usuarioRepository.deleteById(id);
+    }
+
+    public List<UsuarioDTO> filtrarUsuariosPeloNome(String nome){
+        List<Usuario> usuarios = usuarioRepository.findByNomeContains(nome);
+
+        
+        return usuarios.stream().map(Usuario::toDTO).toList();
     }
 
     public Usuario atualizarUsuario(Long id, Usuario dadosUsuario){

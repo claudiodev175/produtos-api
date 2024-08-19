@@ -10,5 +10,5 @@ import com.produtos.api.model.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario,Long> {
     
-    List<Usuario> findByNome(String nome);
+    List<Usuario> findByNomeContains(String nome);
 }
