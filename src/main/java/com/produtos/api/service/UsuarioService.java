@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import com.produtos.api.dto.UsuarioDTO;
 import com.produtos.api.model.Usuario;
@@ -30,6 +31,7 @@ public class UsuarioService {
 
     }
 
+    @DeleteMapping("/{id}")
     public void deletarUsuario(Long id){
         usuarioRepository.deleteById(id);
     }
