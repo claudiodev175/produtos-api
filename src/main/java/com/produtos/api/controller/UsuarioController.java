@@ -1,5 +1,6 @@
 package com.produtos.api.controller;
 
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.produtos.api.dto.UsuarioDTO;
@@ -60,5 +62,10 @@ public class UsuarioController {
         }
 
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.atualizarUsuario(id, dadosUsuario));
+    }
+
+    @GetMapping("/busca")
+    public ResponseEntity<List<UsuarioDTO>> filtrarUsuariosPeloNome(@RequestParam("nome")String nome){
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioService.filtrarUsuariosPeloNome(nome));
     }
 }
