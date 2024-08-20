@@ -1,5 +1,6 @@
 package com.produtos.api.controller;
 
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.produtos.api.constants.RegistroAtivo;
 import com.produtos.api.dto.UsuarioDTO;
 import com.produtos.api.model.Usuario;
 import com.produtos.api.service.UsuarioService;
@@ -61,4 +64,10 @@ public class UsuarioController {
 
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.atualizarUsuario(id, dadosUsuario));
     }
+
+   @GetMapping("/pesquisar")
+   public ResponseEntity<List<UsuarioDTO>> filtrarUsuariosPeloRegistro(@RequestParam(name = "registro",defaultValue = "ATIVO") RegistroAtivo registro){
+        return ResponseEntity.ok().body(usuarioService.filtrarUsuariosPeloRegistro(registro));
+
+   }
 }
