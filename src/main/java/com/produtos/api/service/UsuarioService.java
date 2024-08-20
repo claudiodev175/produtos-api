@@ -1,11 +1,13 @@
 package com.produtos.api.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
+import com.produtos.api.constants.RegistroAtivo;
 import com.produtos.api.dto.UsuarioDTO;
 import com.produtos.api.model.Usuario;
 import com.produtos.api.repository.UsuarioRepository;
@@ -52,5 +54,11 @@ public class UsuarioService {
 
         return null;
         
+    }
+
+    public List<UsuarioDTO> filtrarUsuariosPeloRegistro(RegistroAtivo registro){
+        List<Usuario> usuarios = usuarioRepository.findByRegistro(registro);
+
+        return usuarios.stream().map(Usuario::toDTO).toList();
     }
 }
